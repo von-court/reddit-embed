@@ -17,14 +17,39 @@ def main():
     if subreddit_name:
         # Fetch top 6 listings
         subreddit = reddit.subreddit(subreddit_name)
-        top_posts = list(subreddit.top(limit=6))
+        top_posts = list(subreddit.hot(limit=6))
 
-        # Display the top 6 listings
+        st.markdown("""
+        <style>
+            .post {
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            .post-title {
+                font-weight: bold;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+            .post-stats {
+                font-size: 0.9em;
+                color: #888;
+                margin-top: 10px;
+            }
+        </style>
+        """, unsafe_allow_html=True)
+
+        # Display the top 6 listings with styling
         for post in top_posts:
-            st.write(f"**{post.title}**")
-            st.write(post.selftext)
-            st.write(f"🔼 {post.ups} | 💬 {post.num_comments}")
-            st.write("---")
+            post_content = f"""
+            <div class="post">
+                <div class="post-title">{post.title}</div>
+                <div>{post.selftext}</div>
+                <div class="post-stats">🔼 {post.ups} | 💬 {post.num_comments}</div>
+            </div>
+            """
+            st.markdown(post_content, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
