@@ -42,7 +42,7 @@ def main():
         """, unsafe_allow_html=True)
 
         # Display the top 6 listings with styling
-        for post in top_posts if not post.stickied:
+        for post in [post for post in subreddit.hot(limit=10) if not post.stickied][:6]:
             post_content = f"""
             <div class="post">
                 <div class="post-title">{post.title}</div>
