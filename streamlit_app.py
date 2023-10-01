@@ -9,10 +9,11 @@ reddit = praw.Reddit(
 )
 
 def main():
-    st.title("Top 6 Listings in a Reddit Subreddit")
+    # st.title("Top 6 Listings in a Reddit Subreddit")
 
     # Input for subreddit name
-    subreddit_name = st.text_input("Enter subreddit name:", "all")
+    # subreddit_name = st.text_input("Enter subreddit name:", "all")
+    subreddit_name = "berlin"
     
     if subreddit_name:
         # Fetch top 6 listings
