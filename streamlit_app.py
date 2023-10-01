@@ -41,7 +41,7 @@ def main():
         """, unsafe_allow_html=True)
 
         # Display the top 6 listings with styling
-        for post in top_posts:
+        for post in top_posts if not post.stickied:
             post_content = f"""
             <div class="post">
                 <div class="post-title">{post.title}</div>
