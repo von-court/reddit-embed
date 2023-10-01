@@ -3,8 +3,8 @@ import praw
 
 # Initialize Reddit API client
 reddit = praw.Reddit(
-    client_id="YOUR_CLIENT_ID",
-    client_secret="YOUR_CLIENT_SECRET",
+    client_id=st.secrets["REDDIT_CLIENT_ID"],
+    client_secret=st.secrets["REDDIT_CLIENT_SECRET"],
     user_agent="streamlit_app"
 )
 
